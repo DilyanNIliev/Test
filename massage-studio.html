@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relax Studio - Масажно Студио Варна</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #a0826d;
+            --accent: #d4a574;
+            --light: #f8f6f3;
+            --white: #ffffff;
+            --text: #2c3e50;
+            --text-light: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--secondary);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 400;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(160, 130, 109, 0.9), rgba(44, 62, 80, 0.8)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23a0826d" width="1200" height="800"/><circle cx="200" cy="200" r="300" fill="%23d4a574" opacity="0.1"/><circle cx="1000" cy="600" r="250" fill="%232c3e50" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2.5vw, 20px);
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 45px;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 2px;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(36px, 5vw, 52px);
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: 400;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            font-size: 18px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: var(--light);
+            padding: 40px 30px;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px rgba(160, 130, 109, 0.15);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: var(--secondary);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .price {
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        .duration {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 50px;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 15px;
+            transition: border-color 0.3s;
+            background: var(--light);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 2px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-button:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(160, 130, 109, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .contact-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .contact-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .contact-item p, .contact-item a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--secondary);
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            nav {
+                justify-content: space-between;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 40px 0;
+            }
+
+            .services, .booking, .contact {
+                padding: 60px 0;
+            }
+
+            .booking-form {
+                padding: 30px 20px;
+            }
+
+            .services-grid {
+                gap: 30px;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Relax Studio</div>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Начало</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#booking">Запази час</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Открийте Вашата Хармония</h1>
+            <p>Професионални масажни терапии в сърцето на Варна</p>
+            <a href="#booking" class="cta-button">Запазете час</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Нашите Услуги</h2>
+            <p class="section-subtitle">Изберете терапията, която ви подхожда</p>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <span class="service-icon">🌿</span>
+                    <h3>Класически Масаж</h3>
+                    <p>Традиционен терапевтичен масаж за релаксация на цялото тяло. Подобрява кръвообращението и намалява мускулното напрежение.</p>
+                    <div class="price">80 лв <span class="duration">/ 60 мин</span></div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <span class="service-icon">💆</span>
+                    <h3>Тайландски Масаж</h3>
+                    <p>Древна техника с разтягания и натиск върху енергийните линии. Увеличава гъвкавостта и възстановява енергийния баланс.</p>
+                    <div class="price">95 лв <span class="duration">/ 90 мин</span></div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <span class="service-icon">🔥</span>
+                    <h3>Дълбокотъканен Масаж</h3>
+                    <p>Интензивна терапия за дълбоките мускулни слоеве. Идеален при хронични болки и контрактури.</p>
+                    <div class="price">90 лв <span class="duration">/ 60 мин</span></div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <span class="service-icon">🌸</span>
+                    <h3>Аромамасаж</h3>
+                    <p>Релаксиращ масаж с етерични масла. Хармонизира тялото и духа, подобрява настроението и съня.</p>
+                    <div class="price">85 лв <span class="duration">/ 60 мин</span></div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <span class="service-icon">🪨</span>
+                    <h3>Масаж с Горещи Камъни</h3>
+                    <p>Луксозна терапия с вулканични камъни. Дълбока релаксация и детоксикация на организма.</p>
+                    <div class="price">110 лв <span class="duration">/ 75 мин</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <h2 class="section-title">Запазете Час</h2>
+            <p class="section-subtitle">Попълнете формата и ние ще се свържем с вас</p>
+
+            <form class="booking-form" onsubmit="handleSubmit(event)">
+                <div class="success-message" id="successMessage">
+                    ✓ Вашата заявка е изпратена успешно! Ще се свържем с вас скоро.
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Име и Фамилия *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефон *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Имейл</label>
+                    <input type="email" id="email" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Изберете Услуга *</label>
+                    <select id="service" name="service" required>
+                        <option value="">-- Изберете --</option>
+                        <option value="classic">Класически Масаж - 80 лв</option>
+                        <option value="thai">Тайландски Масаж - 95 лв</option>
+                        <option value="deep">Дълбокотъканен Масаж - 90 лв</option>
+                        <option value="aroma">Аромамасаж - 85 лв</option>
+                        <option value="stones">Масаж с Горещи Камъни - 110 лв</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Предпочитана Дата</label>
+                    <input type="date" id="date" name="date">
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Предпочитан Час</label>
+                    <input type="time" id="time" name="time">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Допълнителна Информация</label>
+                    <textarea id="message" name="message" placeholder="Имате ли специални изисквания или здравословни особености, които трябва да знаем?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Изпрати Заявка</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Свържете се с нас</h2>
+            <p class="section-subtitle">Ще се радваме да ви чуем</p>
+
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3>Адрес</h3>
+                    <p>ул. Цар Симеон I 25<br>Варна 9000, България</p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h3>Телефон</h3>
+                    <p><a href="tel:+359888123456">+359 888 123 456</a></p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Имейл</h3>
+                    <p><a href="mailto:info@relaxstudio.bg">info@relaxstudio.bg</a></p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <h3>Работно Време</h3>
+                    <p>Пон - Пет: 09:00 - 20:00<br>Събота: 10:00 - 18:00<br>Неделя: Почивен ден</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Relax Studio. Всички права запазени.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Reset form
+            event.target.reset();
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Set minimum date to today
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    </script>
+</body>
+</html>
